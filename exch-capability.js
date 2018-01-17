@@ -2,7 +2,7 @@
 
 /*  ------------------------------------------------------------------------ */
 
-const ccxt        = require ('../../ccxt.js')
+const ccxt        = require ('ccxt')
     , asTable     = require ('as-table') // .configure ({ print: require ('string.ify').noPretty })
     , log         = require ('ololog').noLocate
     , ansi        = require ('ansicolor').nice;
