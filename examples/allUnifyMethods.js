@@ -14,9 +14,17 @@ const ccxt      = require ('ccxt')
  async function getMarkets() {
     const btcSymbol = 'BTC/USD'
     const fetchMarkets = await coinmarketcap.fetchMarkets() // coinmarketcap.markets
+    await ccxt.sleep (coinmarketcap.rateLimit)
+
     const loadMarkets = await coinmarketcap.loadMarkets() // coinmarketcap.markets
+    await ccxt.sleep (coinmarketcap.rateLimit)
+
     const fetchTicker = await coinmarketcap.fetchTicker(btcSymbol)
+    await ccxt.sleep (coinmarketcap.rateLimit)
+
     const tickers = await coinmarketcap.fetchTickers ()
+    await ccxt.sleep (coinmarketcap.rateLimit)
+
     const fetchCurrencies = await coinmarketcap.fetchCurrencies();
 
     const marketKeys = Object.keys(loadMarkets)
@@ -27,8 +35,9 @@ const ccxt      = require ('ccxt')
     const currency = coinmarketcap.currencies[currenciesKeys[0]]
     const markets = coinmarketcap.markets
     // This code to understanding how should work requests
-    // await ccxt.sleep (exchange.rateLimit)
 
+    const getNativeTiker = await coinmarketcap.publicGetTicker({ limit: 10 });
+    await ccxt.sleep (coinmarketcap.rateLimit)
 
     return {
         fetchMarkets: fetchMarkets[0],
@@ -38,6 +47,7 @@ const ccxt      = require ('ccxt')
         fetchCurrencies: [currenciesKeys[0]],
         symbol: symbol,
         currency: currency,
+        getNativeTiker: getNativeTiker,
     };
 }
 
