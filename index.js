@@ -5,6 +5,7 @@ const getMarkets = require('./examples/allUnifyMethods');
 
 app.get('/',  function (req, res) {
     getMarkets().then(obj => {
+        // console.log(obj)
         res.send(obj);
     })
     

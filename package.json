@@ -16,7 +16,5 @@
     "express": "^4.16.2",
     "ololog": "^1.1.78"
   },
-  "devDependencies": {
-    "lodash": "^4.17.4"
-  }
+  "devDependencies": {}
 }
