@@ -3,29 +3,16 @@
 const ccxt      = require ('ccxt')
 const fs        = require ('fs')
 
-const coinmarketcap = new ccxt.coinmarketcap()
-
-// HERE get exchanges list
-// console.log(ccxt.exchanges)
-
-// const { fetchMarkets } = require('../methods')
+const binance = new ccxt.binance()
 
 async function  load() {
-    await coinmarketcap.loadMarkets()
-
-    // console.log(binance.fees) //need
-    // console.log(binance.id) // need
-    // console.log(binance.name) // need
-    // console.log(binance.countries) // need
-    // console.log(binance.urls)// need
-    // console.log(binance.api) // need
-    // console.log(binance.rateLimit) // need
-    // console.log(binance.requiredCredentials) // need
-    // console.log(binance.markets['PHX/BTC'])
-    // console.log(binance.currencies["BTC"])
+    // await binance.loadMarkets()
+    console.log("________________________________________________", "1")
+    const tick =  await binance.fetchTickers()
     
+
     console.log("________________________________________________")
-    console.log(coinmarketcap.currencies )
+    console.log(tick )
     // console.log(binance.commonCurrencies)
     
     // List what i need 

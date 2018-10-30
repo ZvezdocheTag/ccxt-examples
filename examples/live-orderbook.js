@@ -1,3 +1,5 @@
+"use strict";
+
 const asTable   = require ('as-table')
     , log       = require ('ololog').noLocate
     , ansi      = require ('ansicolor').nice
@@ -28,7 +30,7 @@ let printOrderBook = async (id, symbol, depth) => {
 
         // // output a list of all market symbols
         // log (id.green, 'has', exchange.symbols.length, 'symbols:', exchange.symbols.join (', ').yellow)
-
+        // console.log(exchange.markets)
         if (symbol in exchange.markets) {
 
             const market = exchange.markets[symbol]
@@ -44,6 +46,7 @@ let printOrderBook = async (id, symbol, depth) => {
             const priceVolumeHelper = color => ([price, amount]) => ({
                 price: price.toFixed (pricePrecision)[color],
                 amount: amount.toFixed (amountPrecision)[color],
+                '  ': '  ',
             })
 
             const cursorUp = '\u001b[1A'
@@ -79,7 +82,7 @@ let printOrderBook = async (id, symbol, depth) => {
     }
 }
 
-(async function main () {
+;(async function main () {
 
     if (process.argv.length > 4) {
 

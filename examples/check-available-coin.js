@@ -26,7 +26,7 @@ let printUsage = function () {
                 try {
 
                     await exchange.loadMarkets ()
-                    // console.log(symbol, exchange.symbols.includes (symbol))
+                    // console.log(exchange.symbols, exchange.symbols.includes (symbol))
                     if (exchange.symbols.includes (symbol)) {
                         
                         log (id.green)
