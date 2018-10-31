@@ -35,21 +35,50 @@ init(exch).then(async res => {
     const marketsWithPrice = await addMarketBaseUsdPrice( filteredByVolume, ext )
     const getTgScheme = generateTgCoinScheme( exch[0], marketsWithPrice )
     // log ( ccxt.unique( uniqKeys ) )
-    // log ( marketsWithPrice )
+    
     
 });
 
+const initialCoin = {
+    symbol: undefined,
+    datetime: undefined,
+    last: undefined,
+    timestamp: undefined,
+    quoteUsdPrice: undefined,
+    quoteVolume: undefined,
+    percentage: undefined,
+    change: undefined,
+}
+
+function Coin(obj = initialCoin) {
+    for(let key of obj) {
+        // TODO: replace static data
+        log( checkKeysInterface(key[1].list[0], initialCoin) )
+    }
+    return obj; 
+}
+
+function checkKeysInterface(object, initial) {
+    const result = {};
+    for(let key in initial) {
+        result[ key ] = object[ key ]
+    }
+    return result;
+}
+
 function generateTgCoinScheme(name, obj) {
+
     let result = {
         name: name,
         topVolumeByMarkets: undefined,
         topFiveVolume: undefined,
-        topGrows: undefined,
-        topLosers: undefined,
+        topGrow: undefined,
+        topLose: undefined,
         tags: undefined,
     }
     
     const values = Object.entries(obj)
+    Coin(values) 
     for(let key of values) {
 
     }
